@@ -3,7 +3,7 @@
 #include <thread>
 #include <math.h>
 #include <time.h>
-#include <Windows.h>
+#include <unistd.h>
 #include <cstring>
 
 using namespace cv;
@@ -11,10 +11,9 @@ using namespace std;
 
 int main()
 {
-	//웹캡으로 부터 데이터 읽어오기 위해 준비  
 	VideoCapture video(0);
 	if (!video.isOpened()) {
-		cout << "카메라 에러" << endl;
+		cout << "cam_Error" << endl;
 		return -1;
 	}
 	string file;
@@ -35,9 +34,9 @@ int main()
 			if (waitKey(wait) == 27) break;
 
 			imwrite("OpenTest.png", frame);
-			imshow("input", frame);
+			//imshow("input", frame);
 
-			Sleep(wait);
+			sleep(wait);
 		}
 	}
 
